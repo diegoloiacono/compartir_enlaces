@@ -1,0 +1,24 @@
+{
+  "name": "compartir_enlaces",
+  "version": "1.0.0",
+  "description": "Proyecto 2 HAB - Backend",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/diegoloiacono/compartir_enlaces.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/diegoloiacono/compartir_enlaces/issues"
+  },
+  "homepage": "https://github.com/diegoloiacono/compartir_enlaces#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "mysql2": "^2.3.3"
+  }
+}
