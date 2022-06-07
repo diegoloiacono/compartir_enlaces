@@ -15,6 +15,7 @@ const {
   activateUser,
   loginUser,
   deleteUser,
+  // getUsers,
 } = require("./controllers/users");
 
 const { createEntry, editEntry } = require("./controllers/entries");
@@ -24,6 +25,7 @@ const app = express();
 app.use(express.json());
 
 app.post("/users", registerUser);
+// app.get("users", getUsers )
 app.get("/users/activate/:registrationCode", activateUser);
 app.post("/login", loginUser);
 app.post("/entries", validateAuth, createEntry);
