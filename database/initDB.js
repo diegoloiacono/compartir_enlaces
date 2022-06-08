@@ -1,6 +1,5 @@
 require("dotenv").config();
-
-const {DATABASE_NAME} = process.env
+const { DATABASE_NAME } = process.env;
 const getPool = require("./getPool");
 
 const initDB = async () => {
@@ -8,9 +7,9 @@ const initDB = async () => {
     const pool = getPool();
 
     console.log("Creating Database...");
-    await pool.query(`DROP DATABASE IF EXISTS ${DATABASE_NAME}`);
+    await pool.query(`DROP DATABASE IF EXISTS ${DATABASE_NAME};`);
     await pool.query(`CREATE DATABASE ${DATABASE_NAME};`);
-    await pool.query(`USE ${DATABASE_NAME}`);
+    await pool.query(`USE ${DATABASE_NAME};`);
 
     console.log("Deleting tables...");
     await pool.query("DROP TABLE IF EXISTS entries;");
