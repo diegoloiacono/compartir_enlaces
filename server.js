@@ -9,7 +9,6 @@ const {
   registerUser,
   activateUser,
   loginUser,
-  deleteUser,
   // getUsers,
 } = require("./controllers/users");
 
