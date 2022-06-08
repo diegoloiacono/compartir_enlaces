@@ -3,12 +3,7 @@ const express = require("express");
 
 const { SERVER_PORT } = process.env;
 
-const {
-  validateAuth,
-  checkAdmin,
-  notFound,
-  handleError,
-} = require("./middlewares");
+const { validateAuth, notFound, handleError } = require("./middlewares");
 
 const {
   registerUser,
@@ -30,7 +25,8 @@ app.get("/users/activate/:registrationCode", activateUser);
 app.post("/login", loginUser);
 app.post("/entries", validateAuth, createEntry);
 app.patch("/entries/:idEntry", validateAuth, editEntry);
-app.delete("/users/:idUser", validateAuth, checkAdmin, deleteUser);
+app.delete("/users/:idUser", validateAuth);
+// app.delete("/entries/:idUser", validateAuth);
 
 /** Middleware 404 */
 app.use(notFound);

@@ -6,7 +6,7 @@ const { sendMail } = require("../../helpers");
 
 const registerUser = async (req, res, next) => {
   try {
-    const { email, password, name, role } = req.body;
+    const { email, password, name } = req.body;
 
     const userWithSameEmail = await selectUserByEmail(email);
 
@@ -21,7 +21,6 @@ const registerUser = async (req, res, next) => {
     const insertId = await insertUser({
       email,
       encryptedPassword,
-      role,
       name,
       registrationCode,
     });
