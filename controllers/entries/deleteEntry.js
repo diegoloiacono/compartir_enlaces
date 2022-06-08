@@ -1,11 +1,11 @@
-const { removeUser } = require("../../repositories/entries");
+const { removeEntry } = require("../../repositories/entries");
 const { generateError } = require("../../helpers");
 
 const deleteEntry = async (req, res, next) => {
   try {
     const { idEntry } = req.params;
 
-    const affectedRows = await removeUser(idEntry);
+    const affectedRows = await removeEntry(idEntry);
 
     if (affectedRows === 0) {
       generateError("Entry does not exist", 404);
