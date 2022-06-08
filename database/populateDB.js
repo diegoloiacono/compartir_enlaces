@@ -9,8 +9,8 @@ const populateDB = async () => {
     console.log("Inserting data in users...");
 
     await pool.query(
-      `INSERT INTO users (email, password, role, name) VALUES 
-      ("admin@email.com", ?, "admin", "admin");`,
+      `INSERT INTO users (email, password, name) VALUES 
+      ("admin@email.com", ?, "admin");`,
       [await bcrypt.hash("123456", 10)]
     );
 

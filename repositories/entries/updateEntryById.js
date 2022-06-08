@@ -1,11 +1,11 @@
 const getPool = require("../../database/getPool");
 
-const updateEntryById = async ({ title, description, id }) => {
+const updateEntryById = async ({ title, url, date, description }) => {
   const pool = getPool();
 
   const [{ affectedRows }] = await pool.query(
-    "UPDATE entries SET title = ?, description = ? WHERE id = ?",
-    [title, description, id]
+    "UPDATE entries SET title = ?, url = ?, date = ?, description = ? WHERE id = ?",
+    [title, url, date, description]
   );
 
   return affectedRows;
