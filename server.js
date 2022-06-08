@@ -18,7 +18,7 @@ const {
   // getUsers,
 } = require("./controllers/users");
 
-const { createEntry, editEntry } = require("./controllers/entries");
+const { createEntry, editEntry, getEntries } = require("./controllers/entries");
 
 const app = express();
 
@@ -29,6 +29,7 @@ app.post("/users", registerUser);
 app.get("/users/activate/:registrationCode", activateUser);
 app.post("/login", loginUser);
 app.post("/entries", validateAuth, createEntry);
+app.get("/entries", validateAuth, getEntries)
 app.patch("/entries/:idEntry", validateAuth, editEntry);
 app.delete("/users/:idUser", validateAuth, checkAdmin, deleteUser);
 

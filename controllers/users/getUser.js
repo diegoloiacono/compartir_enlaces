@@ -1,3 +1,6 @@
 // const getPool = require("../../database/getPool")
 
-// const getUsers = async ()
+// const getUsers = async (res, req, next){
+
+    
+// }
