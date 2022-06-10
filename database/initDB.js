@@ -1,6 +1,6 @@
 require("dotenv").config();
 
-const {DATABASE_NAME} = process.env
+const { DATABASE_NAME } = process.env;
 const getPool = require("./getPool");
 
 const initDB = async () => {
