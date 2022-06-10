@@ -31,7 +31,7 @@ const initDB = async () => {
     await pool.query(`
       CREATE TABLE entries (
         id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-        date DATE NOT NULL,
+        date datetime default now(),
         title VARCHAR(100) NOT NULL,
         description VARCHAR(500) NOT NULL,
         url VARCHAR(500) NOT NULL,
