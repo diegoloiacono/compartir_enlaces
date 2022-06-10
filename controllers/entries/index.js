@@ -1,0 +1,6 @@
+const createEntry = require("./createEntry");
+const editEntry = require("./editEntry");
+const getEntries = require("./getEntries");
+const deleteEntry = require("./deleteEntry");
+
+module.exports = { createEntry, editEntry, getEntries, deleteEntry };
