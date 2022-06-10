@@ -8,7 +8,6 @@ const checkEntrieById = async (entrieId)=>{
         "SELECT * FROM enlaces_web.entries where id = ?",
         [entrieId]
       );
-        // console.log(id)
       return id;
 
 }

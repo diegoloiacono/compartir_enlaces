@@ -6,7 +6,6 @@ const { generateError } = require("../../helpers");
 const loginUser = async (req, res, next) => {
   try {
     const { email, password } = req.body;
-    console.log(req.body);
 
     const user = await selectUserByEmail(email);
 

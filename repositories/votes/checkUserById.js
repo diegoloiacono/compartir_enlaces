@@ -8,7 +8,6 @@ const checkUserById = async (userId)=>{
         "SELECT * FROM enlaces_web.users where id = ?",
         [userId]
       );
-        // console.log(id)
       return id;
 
 }
