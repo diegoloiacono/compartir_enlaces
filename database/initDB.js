@@ -44,7 +44,6 @@ const initDB = async () => {
     await pool.query(`
       CREATE TABLE votes (
         id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-        vote BOOLEAN,
         entry_id int UNSIGNED,
         user_id int UNSIGNED,
         KEY entry_id (entry_id),
