@@ -6,21 +6,22 @@ const createEntry = async (req, res, next) => {
 
     const userId = req.auth.id;
 
-    const { title, description } = req.body;
+    const { title, description, url } = req.body;
 
     const insertId = await insertEntry({
       title,
       url,
-      date,
       description,
       userId,
     });
 
     res.status(201).send({
       status: "ok",
-      data: { id: insertId, title, url, date, description, userId },
+      data: { id: insertId, title, url,  description, userId },
     });
+    console.log(title)
   } catch (error) {
+    // console.log(error)
     next(error);
   }
 };
