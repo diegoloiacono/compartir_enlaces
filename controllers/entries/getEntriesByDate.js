@@ -3,9 +3,10 @@ const { selectEntryByDate } = require("../../repositories/entries");
 
 const getEntriesByDate = async (req, res, next) => {
   try {
-    const { title, description } = req.query;
+    const { date } = req.query;
 
-    const entries = await selectEntryByDate({ title, description });
+    const entries = await selectEntryByDate({ date });
+    console.log(date);
 
     if (entries.length === 0) {
       throw generateError("No entries found", 404);

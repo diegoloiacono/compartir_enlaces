@@ -8,6 +8,7 @@ const selectEntryByDate = async (date) => {
   ]);
 
   return entries;
+  console.log(entries);
 };
 
 module.exports = selectEntryByDate;
