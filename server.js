@@ -22,6 +22,7 @@ const {
   createEntry,
   editEntry,
   getEntries,
+  getEntriesByDate,
   deleteEntry,
 } = require("./controllers/entries");
 
@@ -34,7 +35,8 @@ app.post("/users", registerUser);
 app.get("/users/activate/:registrationCode", activateUser);
 app.post("/login", loginUser);
 app.post("/entries", validateAuth, createEntry);
-app.get("/entries", validateAuth, getEntries);
+app.get("/entries", getEntries);
+app.get("/entries/:dateEntry", getEntriesByDate);
 app.patch("/entries/:idEntry", validateAuth, editEntry);
 app.delete("/users/:idUser", validateAuth, checkAdmin, deleteUser);
 app.delete("/entries/:idEntry", validateAuth, deleteEntry);

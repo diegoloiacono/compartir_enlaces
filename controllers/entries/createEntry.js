@@ -17,9 +17,9 @@ const createEntry = async (req, res, next) => {
 
     res.status(201).send({
       status: "ok",
-      data: { id: insertId, title, url,  description, userId },
+      data: { id: insertId, title, url, description, userId },
     });
-    console.log(title)
+    console.log(title);
   } catch (error) {
     // console.log(error)
     next(error);
