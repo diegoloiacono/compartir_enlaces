@@ -36,7 +36,7 @@ app.get("/users/activate/:registrationCode", activateUser);
 app.post("/login", loginUser);
 app.post("/entries", validateAuth, createEntry);
 app.get("/entries", getEntries);
-app.get("/entries/:dateEntry", getEntriesByDate);
+app.get("/entries/:date", validateAuth, getEntriesByDate);
 app.patch("/entries/:idEntry", validateAuth, editEntry);
 app.delete("/users/:idUser", validateAuth, checkAdmin, deleteUser);
 app.delete("/entries/:idEntry", validateAuth, deleteEntry);

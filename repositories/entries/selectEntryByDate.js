@@ -2,13 +2,13 @@ const getPool = require("../../database/getPool");
 
 const selectEntryByDate = async (date) => {
   const pool = getPool();
-
-  const [[entries]] = await pool.query("SELECT * FROM entries WHERE date = ?", [
-    date,
-  ]);
+  const dateLike = `${date}%`;
+  const [entries] = await pool.query(
+    "SELECT * FROM entries WHERE date LIKE ?",
+    [dateLike]
+  );
 
   return entries;
-  console.log(entries);
 };
 
 module.exports = selectEntryByDate;
