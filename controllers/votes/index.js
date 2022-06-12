@@ -1,3 +1,6 @@
 const insertVote = require('./insertVote')
+const getVotes = require('./getVotes')
+const deleteVote = require('./deleteVote')
 
-module.exports = {insertVote}
+
+module.exports = {insertVote, getVotes, deleteVote}
