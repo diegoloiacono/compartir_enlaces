@@ -14,14 +14,9 @@ const {
   registerUser,
   activateUser,
   loginUser,
+  deleteUser
 } = require("./controllers/users");
 // controller/entries
-const { 
-  createEntry,
-   editEntry, 
-   getEntries 
-  } = require("./controllers/entries");
-// controller/votes
 const {
   insertVote,
   getVotes,
@@ -41,9 +36,6 @@ const app = express();
 app.use(express.json());
 
 app.post("/users", registerUser);
-app.get("/users/activate/:registrationCode", activateUser);
-app.post("/login", loginUser);
-app.post("/entries", validateAuth, createEntry);
 app.patch("/entries/:idEntry", validateAuth,  editEntry);
 app.delete("/users/:idUser", validateAuth);
 
