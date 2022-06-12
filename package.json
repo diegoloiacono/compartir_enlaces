@@ -1,13 +1,14 @@
 {
   "name": "enlaces_web",
   "version": "1.0.0",
-  "description": "",
+  "description": "Proyecto 2 HAB - Backend",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon server.js",
     "initDB": "node database/initDB.js",
     "populateDB": "node database/populateDB.js",
-    "test-db": "npm run initDB && npm run populateDB && npm run dev"
+    "test-db": "npm run initDB && npm run populateDB && npm run dev",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",

@@ -7,9 +7,9 @@ const initDB = async () => {
     const pool = getPool();
 
     console.log("Creating Database...");
-    await pool.query(`DROP DATABASE IF EXISTS ${DATABASE_NAME};`);
+    await pool.query(`DROP DATABASE IF EXISTS ${DATABASE_NAME}`);
     await pool.query(`CREATE DATABASE ${DATABASE_NAME};`);
-    await pool.query(`USE ${DATABASE_NAME};`);
+    await pool.query(`USE ${DATABASE_NAME}`);
 
     console.log("Deleting tables...");
     await pool.query("DROP TABLE IF EXISTS entries;");
@@ -22,6 +22,7 @@ const initDB = async () => {
         id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         email VARCHAR(100) UNIQUE NOT NULL,
         password VARCHAR(100) NOT NULL,
+        role ENUM("normal", "admin") DEFAULT "normal",
         name VARCHAR(100),
         registrationCode VARCHAR(100)
       );
@@ -44,6 +45,10 @@ const initDB = async () => {
     await pool.query(`
       CREATE TABLE votes (
         id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+<<<<<<< HEAD
+=======
+        vote int NOT NULL,
+>>>>>>> diego_dev
         entry_id int UNSIGNED,
         user_id int UNSIGNED,
         KEY entry_id (entry_id),

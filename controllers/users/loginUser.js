@@ -28,6 +28,7 @@ const loginUser = async (req, res, next) => {
 
     const tokenPayload = {
       id: user.id,
+      role: user.role,
     };
 
     const token = jwt.sign(tokenPayload, process.env.JWT_SECRET, {

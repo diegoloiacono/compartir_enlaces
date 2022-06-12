@@ -1,11 +1,11 @@
 const { generateError } = require("../../helpers");
-const { selectEntries } = require("../../repositories/entries");
+const { selectEntryByDate } = require("../../repositories/entries");
 
-const getEntries = async (req, res, next) => {
+const getEntriesByDate = async (req, res, next) => {
   try {
-    const { title, description } = req.query;
+    const { date } = req.params;
 
-    const entries = await selectEntries({ title, description });
+    const entries = await selectEntryByDate(date);
 
     if (entries.length === 0) {
       throw generateError("No entries found", 404);
@@ -17,4 +17,4 @@ const getEntries = async (req, res, next) => {
   }
 };
 
-module.exports = getEntries;
+module.exports = getEntriesByDate;
