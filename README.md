@@ -118,6 +118,20 @@ Returns a JWT for an existing user.
   }
 }
 ```
+#### Delete User by id (Admin)
+```
+DELETE /users/:id
+```
+
+this endpoint only is avalible for user with admin role
+
+**Response:**
+```json
+{ 
+  "status": "ok", 
+  "message": "User deleted"
+}
+```
 
 ### Entries End-points
 
@@ -143,18 +157,93 @@ you can send a entrie, you need auth token for this EndPoint ,send JWT for heade
 ```
 **Response:**
 
-```javascript
+```json
 {
-  status: "ok",
-  data: { 
-    id:'...', //id entrie in DB
-    title:'...',
-    url:'...',
-    description:'...', 
-    userId:'...'
+  "status": "ok",
+  "data": { 
+    "id":'...', //id entrie in DB
+    "title":'...',
+    "url":'...',
+    "description":'...', 
+    "userId":'...'
   }
 }
 ```
+#### Get all entries
+```
+GET /entries
+```
+**Parameters:**
+```json
+{
+  "title":"...",
+  "description":"..."
+}
+```
+**response:*
+```json
+{
+  "status":"ok"
+  "data":[{...}]
+}
+```
+#### get entries by date (params)
+```
+GET /entries/:date
+```
+
+get a entrie by date selection, date format YYYY-MM-DD
+
+**Response:**
+
+```json
+{
+  "status":"ok"
+  "data":{...}
+}
+```
+#### Edit a entrie
+
+```
+PATCH /entries/:idEntry
+```
+
+ you can edit the entri with title and/or description, this end point need params and body request
+
+**Parameters:**
+```json
+{
+  "title":"...", //new title
+  "description":"..." // new description
+}
+```
+**Response:**
+
+```json
+{ 
+  "status": "ok", 
+  "message": "Entry updated" 
+}
+```
+
+
+
+#### Delete a entrie 
+
+```
+DELETE /entries/:idEntry
+```
+**Response:**
+
+```json
+{ 
+  "status": "ok", 
+  "message": "Entry deleted" 
+}
+```
+
+
+
 ### Votes End Points
 
 NOTE: YOU NEED THE JWT TOKEN, SEND JWT BEARER IN AUTH HEADER, JWT IS IN LOGIN RESPONSE
