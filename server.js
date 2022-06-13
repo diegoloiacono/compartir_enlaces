@@ -14,14 +14,10 @@ const {
   registerUser,
   activateUser,
   loginUser,
-  deleteUser
+  deleteUser,
 } = require("./controllers/users");
 // controller/entries
-const {
-  insertVote,
-  getVotes,
-  deleteVote
-}= require('./controllers/votes')
+const { insertVote, getVotes, deleteVote } = require("./controllers/votes");
 
 const {
   createEntry,
@@ -36,13 +32,10 @@ const app = express();
 app.use(express.json());
 
 app.post("/users", registerUser);
-app.patch("/entries/:idEntry", validateAuth,  editEntry);
 app.delete("/users/:idUser", validateAuth);
-
-// vote area
-app.get('/votes', validateAuth,getVotes )
-app.post("/vote", validateAuth, insertVote)
-app.delete('/vote',validateAuth ,deleteVote)
+app.get("/votes", validateAuth, getVotes);
+app.post("/vote", validateAuth, insertVote);
+app.delete("/vote", validateAuth, deleteVote);
 app.get("/users/activate/:registrationCode", activateUser);
 app.post("/login", loginUser);
 app.post("/entries", validateAuth, createEntry);
