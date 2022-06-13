@@ -2,12 +2,23 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { selectUserByEmail } = require("../../repositories/users");
 const { generateError } = require("../../helpers");
+const Joi = require("joi");
 
+const loginUserSchema = Joi.object({
+  email: Joi.string().email().required(),
+  password: Joi.string().required(),
+});
 const loginUser = async (req, res, next) => {
   try {
     const { email, password } = req.body;
 
     const user = await selectUserByEmail(email);
+
+    const { error } = loginUserSchema.validate(req.body);
+
+    if (error) {
+      generateError(error.message, 400);
+    }
 
     if (user == null) {
       generateError("User does no exist", 400);
