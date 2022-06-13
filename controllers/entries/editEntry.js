@@ -3,6 +3,7 @@ const {
   updateEntryById,
 } = require("../../repositories/entries");
 const { generateError } = require("../../helpers");
+const { editEntrySchema } = require("../../schemas");
 
 const editEntry = async (req, res, next) => {
   try {
@@ -21,6 +22,12 @@ const editEntry = async (req, res, next) => {
     }
 
     await updateEntryById({ ...entryDB, ...req.body });
+
+    const { error } = editEntrySchema.validate(req.body);
+
+    if (error) {
+      generateError(error.message, 400);
+    }
 
     res.status(200).send({ status: "ok", message: "Entry updated" });
   } catch (error) {

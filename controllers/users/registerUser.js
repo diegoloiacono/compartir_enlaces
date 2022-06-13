@@ -3,6 +3,7 @@ const { v4: uuidv4 } = require("uuid");
 const { insertUser, selectUserByEmail } = require("../../repositories/users");
 const { generateError } = require("../../helpers");
 const { sendMail } = require("../../helpers");
+const { registerUserSchema } = require("../../schemas");
 
 const registerUser = async (req, res, next) => {
   try {
@@ -26,6 +27,11 @@ const registerUser = async (req, res, next) => {
       registrationCode,
     });
 
+    const { error } = registerUserSchema.validate(req.body);
+
+    if (error) {
+      generateError(error.message, 400);
+    }
     const { SERVER_HOST, SERVER_PORT } = process.env;
 
     await sendMail(
