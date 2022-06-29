@@ -5,7 +5,7 @@ const checkEntrieById = async (entrieId)=>{
     const pool = getPool();
 
     const [id] = await pool.query(
-        "SELECT * FROM enlaces_web.entries where id = ?",
+        "SELECT * FROM entries where id = ?",
         [entrieId]
       );
       return id;

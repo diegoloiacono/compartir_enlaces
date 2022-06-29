@@ -6,7 +6,7 @@ const getAllVotes = async ()=>{
     const pool = getPool()
 
     const [ allVotes ] = await pool.query(
-        'SELECT * FROM enlaces_web.votes'
+        'SELECT * FROM votes'
       );
       console.log(allVotes)
     
