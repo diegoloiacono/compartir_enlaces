@@ -15,6 +15,12 @@ const registerUser = async (req, res, next) => {
   try {
     const { email, password, name, role } = req.body;
 
+    const { error } = registerUserSchema.validate(req.body);
+
+    if (error) {
+      generateError(error.message, 400);
+    }
+
     const userWithSameEmail = await selectUserByEmail(email);
 
     if (userWithSameEmail) {
@@ -32,12 +38,6 @@ const registerUser = async (req, res, next) => {
       name,
       registrationCode,
     });
-
-    const { error } = registerUserSchema.validate(req.body);
-
-    if (error) {
-      generateError(error.message, 400);
-    }
 
     const { SERVER_HOST, SERVER_PORT } = process.env;
 
