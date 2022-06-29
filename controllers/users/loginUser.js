@@ -8,6 +8,7 @@ const loginUserSchema = Joi.object({
   email: Joi.string().email().required(),
   password: Joi.string().required(),
 });
+
 const loginUser = async (req, res, next) => {
   try {
     const { email, password } = req.body;
