@@ -6,9 +6,9 @@ const { generateError } = require("../../helpers");
 const Joi = require("joi");
 
 const editEntrySchema = Joi.object({
-  title: Joi.string().min(4).max(100).required(),
-  url: Joi.string().min(12).max(100).required(),
-  description: Joi.string().min(4).max(100).required(),
+  title: Joi.string().min(4).max(100),
+  url: Joi.string().uri(),
+  description: Joi.string().min(4).max(100),
 });
 
 const editEntry = async (req, res, next) => {
@@ -24,16 +24,15 @@ const editEntry = async (req, res, next) => {
     const userId = req.auth.id;
 
     if (entryDB.user_id !== userId) {
-      generateError("You cant update someone else's entry", 400);
+      throw generateError("You cant update someone else's entry", 400);
     }
-
-    await updateEntryById({ ...entryDB, ...req.body });
-
     const { error } = editEntrySchema.validate(req.body);
 
     if (error) {
       generateError(error.message, 400);
     }
+
+    await updateEntryById({ ...entryDB, ...req.body });
 
     res.status(200).send({ status: "ok", message: "Entry updated" });
   } catch (error) {
