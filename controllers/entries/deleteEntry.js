@@ -11,6 +11,8 @@ const deleteEntry = async (req, res, next) => {
       generateError("Entry does not exist", 404);
     }
 
+    const userId = req.auth.id;
+
     res.status(200).send({ status: "ok", message: "Entry deleted" });
   } catch (error) {
     next(error);
