@@ -3,9 +3,8 @@ const { selectEntries } = require("../../repositories/entries");
 
 const getEntries = async (req, res, next) => {
   try {
-    const { title, description } = req.query;
 
-    const entries = await selectEntries({ title, description });
+    const entries = await selectEntries();
 
     if (entries.length === 0) {
       throw generateError("No entries found", 404);
