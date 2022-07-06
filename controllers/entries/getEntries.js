@@ -3,6 +3,13 @@ const { selectEntries } = require("../../repositories/entries");
 
 const getEntries = async (req, res, next) => {
   try {
+    const {date}= req.query.date
+
+    if (date){
+      const entries = await selectEntryByDate(date);
+      res.status(200).json({ status: "ok", data: entries })
+      return
+    }
 
     const entries = await selectEntries();
 
