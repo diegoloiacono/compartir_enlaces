@@ -38,7 +38,6 @@ app.post("/login", loginUser);
 app.delete("/users/:idUser", validateAuth, checkAdmin, deleteUser);
 // entries
 app.get("/entries", getEntries);
-// app.get("/entries/:date", validateAuth, getEntriesByDate);
 app.post("/entries", validateAuth, createEntry);
 app.patch("/entries/:idEntry", validateAuth, editEntry);
 app.delete("/entries/:idEntry", validateAuth, deleteEntry);
