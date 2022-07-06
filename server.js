@@ -16,6 +16,7 @@ const {
   activateUser,
   loginUser,
   deleteUser,
+  getProfile,
 } = require("./controllers/users");
 // controller/entries
 const { insertVote, getVotes, deleteVote } = require("./controllers/votes");
@@ -43,6 +44,7 @@ app.post("/users", registerUser);
 app.get("/users/activate/:registrationCode", activateUser);
 app.post("/login", loginUser);
 app.delete("/users/:idUser", validateAuth, checkAdmin, deleteUser);
+app.get("/profile", getProfile);
 // entries
 app.get("/entries", getEntries);
 app.get("/entries/:date", getEntriesByDate);
