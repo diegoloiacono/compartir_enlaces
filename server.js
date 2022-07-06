@@ -1,5 +1,6 @@
 require("dotenv").config();
 const express = require("express");
+var cors = require("cors");
 
 const { SERVER_PORT } = process.env;
 
@@ -29,6 +30,12 @@ const {
 
 const app = express();
 
+app.use(
+  cors({
+    origin: "http://localhost:3001",
+  })
+);
+
 app.use(express.json());
 
 // users
@@ -38,7 +45,7 @@ app.post("/login", loginUser);
 app.delete("/users/:idUser", validateAuth, checkAdmin, deleteUser);
 // entries
 app.get("/entries", getEntries);
-app.get("/entries/:date", validateAuth, getEntriesByDate);
+app.get("/entries/:date", getEntriesByDate);
 app.post("/entries", validateAuth, createEntry);
 app.patch("/entries/:idEntry", validateAuth, editEntry);
 app.delete("/entries/:idEntry", validateAuth, deleteEntry);
