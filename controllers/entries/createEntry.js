@@ -4,8 +4,9 @@ const Joi = require("joi");
 
 const createEntrySchema = Joi.object({
   title: Joi.string().min(4).max(100).required(),
-  url: Joi.string().uri().required(),
+  url: Joi.string().required(),
   description: Joi.string().min(4).max(100).required(),
+  userId: Joi.required(),
 });
 
 const createEntry = async (req, res, next) => {

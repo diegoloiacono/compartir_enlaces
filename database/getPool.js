@@ -17,6 +17,7 @@ const getPool = () => {
       port: DATABASE_PORT,
       user: DATABASE_USER,
       password: DATABASE_PASSWORD,
+      database: DATABASE_NAME,
       timezone: "Z",
       connectionLimit: 10,
     });
