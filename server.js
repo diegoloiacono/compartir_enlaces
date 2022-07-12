@@ -1,5 +1,6 @@
 require("dotenv").config();
 const express = require("express");
+const cors = require("cors");
 
 const { SERVER_PORT } = process.env;
 
@@ -28,6 +29,11 @@ const {
 } = require("./controllers/entries");
 
 const app = express();
+app.use(
+  cors({
+    origin: ["http://localhost:3000", "www.mi-otro-frontend.com"],
+  })
+);
 
 app.use(express.json());
 
