@@ -19,7 +19,7 @@ const {
   getProfile,
 } = require("./controllers/users");
 // controller/entries
-const { insertVote, getVotes, deleteVote } = require("./controllers/votes");
+const { getVotes, deleteVote, voteEntry } = require("./controllers/votes");
 
 const {
   createEntry,
@@ -27,6 +27,8 @@ const {
   getEntries,
   getEntriesByDate,
   deleteEntry,
+  getEntriesWithVotes,
+  checkVote,
 } = require("./controllers/entries");
 
 const app = express();
@@ -44,16 +46,19 @@ app.post("/users", registerUser);
 app.get("/users/activate/:registrationCode", activateUser);
 app.post("/login", loginUser);
 app.delete("/users/:idUser", validateAuth, checkAdmin, deleteUser);
-app.get("/profile", getProfile);
+app.get("/profile", validateAuth, getProfile);
 // entries
 app.get("/entries", getEntries);
 app.get("/entries/:date", getEntriesByDate);
+app.get("/entriesWithVotes", getEntriesWithVotes);
 app.post("/entries", validateAuth, createEntry);
 app.patch("/entries/:idEntry", validateAuth, editEntry);
 app.delete("/entries/:idEntry", validateAuth, deleteEntry);
+app.get("/entries/:entryId/checkVote", validateAuth, checkVote);
 // votes
 app.get("/votes", validateAuth, getVotes);
-app.post("/vote", validateAuth, insertVote);
+// app.post("/vote", validateAuth, insertVote);
+app.post("/entries/:entryId/vote", validateAuth, voteEntry);
 app.delete("/vote", validateAuth, deleteVote);
 
 /** Middleware 404 */

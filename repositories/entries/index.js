@@ -4,6 +4,8 @@ const selectEntryByDate = require("./selectEntryByDate");
 const selectEntries = require("./selectEntries");
 const updateEntryById = require("./updateEntryById");
 const removeEntry = require("./removeEntry");
+const selectEntriesWithVotes = require("./selectEntriesWithVotes");
+const selectCheckVote = require("./selectCheckVote");
 
 module.exports = {
   insertEntry,
@@ -12,4 +14,6 @@ module.exports = {
   updateEntryById,
   selectEntries,
   removeEntry,
+  selectEntriesWithVotes,
+  selectCheckVote,
 };
