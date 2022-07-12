@@ -49,7 +49,7 @@ const initDB = async () => {
         user_id int UNSIGNED,
         KEY entry_id (entry_id),
         KEY user_id (user_id),
-        FOREIGN KEY (entry_id) REFERENCES entries (id),
+        FOREIGN KEY (entry_id) REFERENCES entries (id) ON DELETE CASCADE,
         FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
       );
     `);

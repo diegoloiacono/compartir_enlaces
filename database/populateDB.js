@@ -14,6 +14,10 @@ const populateDB = async () => {
       [await bcrypt.hash("123456", 10)]
     );
 
+    await pool.query(
+      `INSERT INTO entries (title, description, url, user_id) VALUES ("Entry demo", "Entry demo description", "http://www.google.com", "1");`
+    );
+
     console.log("Database populated");
   } catch (error) {
     console.error(error);
